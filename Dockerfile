@@ -6,7 +6,6 @@ RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN sed -ri 's/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g' /etc/pam.d/sshd
 RUN mkdir -p /root/.ssh && chown root.root /root && chmod 700 /root/.ssh
-RUN echo 'root:623121aa' | chpasswd
 RUN yum list | grep initscripts
 RUN yum install initscripts -y
 RUN wget -O install.sh http://download.bt.cn/install/install.sh \
